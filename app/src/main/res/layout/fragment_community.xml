@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/dimen_24"
+        tools:context=".module.fragment.home.CommunityFragment">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginVertical="@dimen/dimen_10"
+            android:src="@drawable/otp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextStyle_Semi_Bold_18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/stay_connected_with_a_community"
+            android:textAlignment="center"
+            android:textColor="@color/text_color" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextStyle_Regular_12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/dimen_10"
+            android:text="@string/communities_bring_members_together_in_topic_based_groups_and_make_it_easy_to_get_admin_announcements_any_community_you_re_added_to_will_appear_here"
+            android:textAlignment="center"
+            android:textColor="@color/text_color" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextStyle_Regular_12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:drawableTint="@color/tab_text_selected"
+            android:gravity="center"
+            android:text="@string/see_example_communities"
+            android:textAlignment="center"
+            android:textColor="@color/tab_text_selected" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextStyle_Medium_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_25"
+            android:background="@drawable/edittext_chat"
+            android:backgroundTint="@color/tab_text_selected"
+            android:gravity="center"
+            android:padding="@dimen/default_space_10"
+            android:text="@string/start_your_community"
+            android:textColor="@color/text_color_inverted" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</layout>

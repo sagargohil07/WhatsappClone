@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/llMenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="end"
+        android:paddingTop="?actionBarSize"
+        android:visibility="gone">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="@dimen/dimen_150"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginVertical="@dimen/dimen_1"
+            android:layout_marginEnd="@dimen/dimen_5"
+            android:background="@drawable/background_menu_options"
+            android:elevation="@dimen/dimen_1"
+            android:orientation="vertical"
+            android:paddingVertical="@dimen/dimen_10">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnNewGroup"
+                style="@style/TextStyle_Regular_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_10"
+                android:paddingStart="@dimen/dimen_10"
+                android:text="@string/LBL_NEW_GROUP"
+                android:textColor="@color/text_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnNewBroadcast"
+                style="@style/TextStyle_Regular_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_10"
+                android:paddingStart="@dimen/dimen_10"
+                android:text="@string/LBL_NEW_BROADCAST"
+                android:textColor="@color/text_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnSettings"
+                style="@style/TextStyle_Regular_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_10"
+                android:paddingStart="@dimen/dimen_10"
+                android:text="@string/LBL_SETTINGS"
+                android:textColor="@color/text_color" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnProfile"
+                style="@style/TextStyle_Regular_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_8"
+                android:paddingStart="@dimen/dimen_10"
+                android:text="@string/LBL_PROFILE"
+                android:textColor="@color/text_color"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnLogout"
+                style="@style/TextStyle_Regular_12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="@dimen/dimen_8"
+                android:paddingStart="@dimen/dimen_10"
+                android:text="@string/logout"
+                android:textColor="@color/text_color"
+                android:visibility="gone" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

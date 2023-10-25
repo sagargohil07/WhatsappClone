@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--DARK MODE COLOR-->
+
+    <color name="primary">#273443</color>
+    <color name="background">#141d26</color>
+    <color name="primary_text">#FFFFFFFF</color>
+    <color name="secondary_text">#757C85</color>
+
+    <color name="menu_background_color">#1F2C34</color>
+    <color name="background_edittext">#1F2C34</color>
+    <color name="background_edittext_otp">#1F2C34</color>
+
+    <color name="background_channel_tag">#1F2C34</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="channel_option_selected">#19887A</color>
+    <color name="channel_option_unselected">#19887A</color>
+
+
+    <color name="green_dark">#075E54</color>
+    <color name="green">#2BB741</color>
+    <color name="green_light">#25D366</color>
+    <color name="textTab">#C4C4C4</color>
+
+    <color name="blue_500">#214E8A</color>
+    <color name="dark_300">#757C85</color>
+    <color name="dark_100">#F1F6F7</color>
+
+    <!-- Palette Greens -->
+    <color name="green_lightest">#e2ffc7</color>
+    <!--       <color name="green_light">#7eb0ad</color>
+           <color name="green">#16cc3e</color>-->
+    <color name="green_100">#19887a</color>
+    <color name="green_200">#0e5e55</color>
+    <color name="green_300">#00574B</color>
+
+    <!-- White & Gray -->
+
+    <color name="off_white">#e0e0e0</color>
+    <color name="gray">#88898b</color>
+
+    <color name="green_dark_1000">#232C35</color>
+    <color name="green_dark_900">#273443</color>
+    <color name="green_dark_800">#075E54</color>
+    <color name="green_dark_600">#128C7E</color>
+    <color name="green_dark_500">#1EBEA5</color>
+    <color name="green_dark_300">#77D7C8</color>
+    <color name="green_dark_200">#D0E9EA</color>
+    <color name="green_dark_100">#EDF8F5</color>
+
+
+    <color name="tab_active">#00a984</color>
+    <color name="tab_text_selected">#1EBEA5</color>
+    <color name="tab_text_color">#8595a1</color>
+
+    <color name="text_color">#FFFFFFFF</color>
+
+    <color name="text_color_inverted">#FF000000</color>
+    <color name="text_color_app_name">#8596A0</color>
+
+    <color name="tool_bar">#1F2C34</color>
+    <color name="background_common">#121B22</color>
+    <color name="selected_text">#00A884</color>
+    <color name="unselected_text">#8596A0</color>
+
+    <color name="chat_receive">#1F2C34</color>
+    <color name="chat_send">#005D4B</color>
+
+    <color name="color_icon">#757C85</color>
+
+</resources>

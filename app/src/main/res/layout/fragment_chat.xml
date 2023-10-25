@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_whatsapp"
+        tools:context=".module.fragment.home.ChatFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolBarTop"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/tool_bar"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dimen_10"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/toolbar_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/toolbar_image"
+                android:layout_width="@dimen/dimen_35"
+                android:layout_height="@dimen/dimen_35"
+                android:layout_marginStart="@dimen/dimen_5"
+                android:src="@drawable/profile"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/toolbar_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_8"
+                android:layout_marginEnd="@dimen/dimen_24"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/linearLayoutCompat2"
+                app:layout_constraintStart_toEndOf="@id/toolbar_image"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar_name"
+                    style="@style/TextStyle_Medium_16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="@string/user"
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/toolbar_image"
+                    app:layout_constraintStart_toEndOf="@id/toolbar_image"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/toolbar_info"
+                    style="@style/TextStyle_Medium_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:text="@string/offline"
+                    android:textColor="@color/off_white"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@id/toolbar_image"
+                    app:layout_constraintTop_toBottomOf="@id/toolbar_name" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutCompat2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:weightSum="3"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivVideoCall"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_marginEnd="@dimen/dimen_16"
+                    android:background="@drawable/ic_video"
+                    android:backgroundTint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivVoiceCall"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:background="@drawable/ic_call"
+                    android:backgroundTint="@color/white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnOptions"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:src="@drawable/ic_options"
+                    android:tint="@color/white" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvChats"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/llChatAction"
+            app:layout_constraintTop_toBottomOf="@id/toolBarTop"
+            tools:listitem="@layout/list_item_sender_text" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llChatAction"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/dimen_5"
+            android:paddingVertical="@dimen/dimen_4"
+            app:layout_constraintBottom_toTopOf="@id/llEmojiView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/dimen_2"
+                android:layout_marginEnd="@dimen/dimen_6"
+                android:background="@drawable/edittext_chat"
+                android:elevation="@dimen/dimen_1"
+                android:minHeight="@dimen/dimen_40"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/btnSend"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnEmoji"
+                    android:layout_width="@dimen/dimen_30"
+                    android:layout_height="@dimen/dimen_30"
+                    android:layout_marginStart="@dimen/dimen_4"
+                    android:layout_marginBottom="@dimen/dimen_5"
+                    android:src="@drawable/ic_emoji"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:tint="@color/dark_300" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etChat"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/dimen_2"
+                    android:layout_marginStart="@dimen/dimen_10"
+                    android:layout_marginEnd="@dimen/dimen_10"
+                    android:background="@android:color/transparent"
+                    android:hint="@string/message"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:scrollbars="vertical"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/dark_300"
+                    android:textSize="@dimen/dimen_16"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/btnFile"
+                    app:layout_constraintStart_toEndOf="@id/btnEmoji"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnFile"
+                    android:layout_width="@dimen/dimen_30"
+                    android:layout_height="@dimen/dimen_30"
+                    android:layout_marginEnd="@dimen/dimen_4"
+                    android:layout_marginBottom="@dimen/dimen_5"
+                    android:padding="@dimen/dimen_6"
+                    android:src="@drawable/ic_clip"
+                    android:tint="@color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:tint="@color/dark_300" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSend"
+                android:layout_width="@dimen/dimen_40"
+                android:layout_height="0dp"
+                android:background="@drawable/edittext_chat"
+                android:backgroundTint="@color/green_dark"
+                android:elevation="@dimen/dimen_1"
+                android:padding="@dimen/dimen_8"
+                android:src="@drawable/ic_send"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <FrameLayout
+            android:id="@+id/llEmojiView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:background="@color/background_edittext_otp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.vanniktech.emoji.EmojiView
+                android:id="@+id/emojiView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </FrameLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/llMedia"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dark_100"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSendImage"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@color/white"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/llAudio"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/dimen_100"
+                    android:layout_height="@dimen/dimen_100"
+                    android:background="@drawable/edittext_bg"
+                    android:backgroundTint="@color/dark_300"
+                    android:padding="@dimen/dimen_10"
+                    android:src="@drawable/ic_audio"
+                    android:tint="@color/dark_100" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvAudioName"
+                    style="@style/TextStyle_Medium_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_5"
+                    android:text="@string/audio"
+                    android:textAlignment="center"
+                    android:textColor="@color/dark_300" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSendClose"
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="@drawable/button_bg"
+                android:backgroundTint="#7F000000"
+                android:padding="@dimen/dimen_5"
+                android:src="@drawable/ic_close"
+                android:tint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSendMedia"
+                android:layout_width="@dimen/dimen_40"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:layout_marginBottom="@dimen/dimen_10"
+                android:background="@drawable/button_bg"
+                android:backgroundTint="@color/green_dark"
+                android:padding="@dimen/dimen_8"
+                android:src="@drawable/ic_send"
+                android:tint="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

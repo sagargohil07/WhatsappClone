@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_sheet"
+        android:backgroundTint="@color/white"
+        android:elevation="@dimen/dimen_2"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_20"
+        android:paddingHorizontal="@dimen/dimen_50">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/llDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_25"
+                android:src="@android:drawable/ic_menu_delete"
+                android:tint="@color/dark_300" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/TextStyle_Medium_12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:text="@string/images"
+                android:textAlignment="center"
+                android:textColor="@color/dark_300" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

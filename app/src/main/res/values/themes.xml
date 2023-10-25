@@ -1,0 +1,175 @@
+<resources>
+
+    <style name="Theme.AllProjects" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+
+        <item name="colorPrimary">@color/primary</item>
+
+        <item name="android:statusBarColor">@color/tool_bar</item>
+        <!-- Customize your theme here. -->
+        <item name="android:textAllCaps">false</item>
+        <item name="android:windowBackground">@color/background_common</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+    <style name="DialogStyle">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="TextStyle_Regular_12">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_12</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TextStyle_Regular_14">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_14</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TextStyle_Regular_16">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_16</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TextStyle_Regular_20">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_20</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TextStyle_Regular_24">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_24</item>
+        <item name="fontFamily">@font/inter_regular</item>
+    </style>
+
+    <style name="TextStyle_Medium_12">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_12</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="TextStyle_Medium_14">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_14</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="TextStyle_Medium_16">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_16</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="TextStyle_Medium_18">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_18</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="TextStyle_Medium_20">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_20</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="TextStyle_Semi_Bold_16">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_16</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+    </style>
+
+    <style name="TextStyle_Semi_Bold_18">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_18</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+    </style>
+
+    <style name="TextStyle_Semi_Bold_20">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_20</item>
+        <item name="fontFamily">@font/inter_semibold</item>
+    </style>
+
+    <style name="TextStyle_Bold_20">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_20</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="TextStyle_Bold_24">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_24</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="TextStyle_Bold_30">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">30sp</item>
+        <item name="fontFamily">@font/inter_extrabold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextStyle_Extra_Bold_30">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">30sp</item>
+        <item name="fontFamily">@font/inter_extrabold</item>
+    </style>
+
+    <style name="TextStyle_Extra_Bold_25">
+        <item name="android:textColor">@color/text_color</item>
+        <item name="android:textSize">@dimen/textSize_25</item>
+        <item name="fontFamily">@font/inter_extrabold</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ImageCircle" parent="">
+        <item name="cornerSize">4%</item>
+    </style>
+
+    <style name="ImageCircle10" parent="">
+        <item name="cornerSize">12%</item>
+    </style>
+
+    <style name="ImageCircle50" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheetDialog" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetStyle</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="EditTextCommon">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">@dimen/textSize_14</item>
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:background">@drawable/edittext_bg</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:layout_height">45dp</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="CustomTextAppearance" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+
+</resources>

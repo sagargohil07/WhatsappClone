@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--LIGHT MODE COLOR-->
+    <color name="primary">#075E54</color>
+    <color name="background">#FFFFFFFF</color>
+    <color name="primary_text">#FF000000</color>
+    <color name="secondary_text">#757C85</color>
+
+    <color name="transparent">#00FFFFFF</color>
+
+    <color name="text_gray">#85959F</color>
+
+    <color name="menu_background_color">#FFFFFFFF</color>
+    <color name="background_edittext">#FFFFFFFF</color>
+    <color name="background_edittext_otp">#F1F6F7</color>
+
+    <color name="background_channel_tag">#EDF8F5</color>
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="channel_option_selected">#19887A</color>
+    <color name="channel_option_unselected">#19887A</color>
+
+    <color name="green_dark">#075E54</color>
+    <color name="green">#2BB741</color>
+    <color name="green_light">#25D366</color>
+    <color name="textTab">#C4C4C4</color>
+
+
+    <color name="blue_500">#214E8A</color>
+    <color name="dark_300">#757C85</color>
+    <color name="dark_100">#F1F6F7</color>
+
+    <!-- Palette Greens -->
+    <color name="green_lightest">#e2ffc7</color>
+    <!--       <color name="green_light">#7eb0ad</color>
+           <color name="green">#16cc3e</color>-->
+    <color name="green_100">#19887a</color>
+    <color name="green_200">#0e5e55</color>
+    <color name="green_300">#00574B</color>
+
+    <!-- White & Gray -->
+
+    <color name="off_white">#e0e0e0</color>
+    <color name="gray">#88898b</color>
+
+
+    <color name="green_dark_1000">#141d26</color>
+    <color name="green_dark_900">#232C35</color>
+    <color name="green_dark_800">#075E54</color>
+    <color name="green_dark_600">#128C7E</color>
+    <color name="green_dark_500">#1EBEA5</color>
+    <color name="green_dark_300">#77D7C8</color>
+    <color name="green_dark_200">#D0E9EA</color>
+    <color name="green_dark_100">#EDF8F5</color>
+
+    <color name="tab_active">#FFFFFFFF</color>
+    <color name="tab_text_selected">#4fa086</color>
+    <color name="tab_text_color">#b4d9d2</color>
+
+    <color name="edit_text_color">#e0e0e0</color>
+
+    <color name="text_color">#FF000000</color>
+    <color name="text_color_inverted">#FFFFFFFF</color>
+    <color name="text_color_app_name">#FFFFFFFF</color>
+
+    <color name="tool_bar">#008069</color>
+    <color name="background_common">#FFFFFF</color>
+    <color name="selected_text">#FFFFFF</color>
+    <color name="unselected_text">#B0D9D1</color>
+
+    <color name="chat_receive">#FFFFFF</color>
+    <color name="chat_send">#E7FFDB</color>
+
+    <color name="color_icon">#FFFFFF</color>
+
+    <!--add status color list -->
+    <color name="color1">#DFFF00</color>
+    <color name="color2">#FFBF00</color>
+    <color name="color3">#FF7F50</color>
+    <color name="color4">#DE3163</color>
+    <color name="color5">#9FE2BF</color>
+    <color name="color6">#40E0D0</color>
+    <color name="color7">#6495ED</color>
+    <color name="color8">#CCCCFF</color>
+
+
+</resources>

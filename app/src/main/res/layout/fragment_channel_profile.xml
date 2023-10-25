@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".module.fragment.story.ChannelProfileFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolBarTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_common"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center_vertical|top"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/toolbar_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_10"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:background="#00FFFFFF"
+                android:src="@drawable/ic_arrow_back"
+                android:tint="@color/textTab"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivChannelImage"
+                    android:layout_width="@dimen/dimen_150"
+                    android:layout_height="@dimen/dimen_150"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearance="@style/ImageCircle50" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvChannelName"
+                            style="@style/TextStyle_Medium_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/user_name"
+                            android:textSize="@dimen/textSize_16" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/dimen_18"
+                            android:layout_height="@dimen/dimen_22"
+                            android:layout_marginStart="@dimen/dimen_5"
+                            android:src="@drawable/verified" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvChannelInfo"
+                        style="@style/TextStyle_Medium_16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/_0m_followers"
+                        android:textColor="@color/text_gray"
+                        android:textSize="@dimen/textSize_12" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/dimen_10">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvChannelFollow"
+                        style="@style/TextStyle_Regular_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_done"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/green_100"
+                        android:padding="@dimen/dimen_10"
+                        android:text="@string/following"
+                        android:textColor="@color/green_100" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextStyle_Regular_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_forward"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/green_100"
+                        android:padding="@dimen/dimen_10"
+                        android:text="@string/forward"
+                        android:textColor="@color/green_100" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        style="@style/TextStyle_Regular_12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableTop="@drawable/ic_share"
+                        android:drawablePadding="5dp"
+                        android:drawableTint="@color/green_100"
+                        android:padding="@dimen/dimen_10"
+                        android:text="@string/share"
+                        android:textColor="@color/green_100" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/dimen_10"
+            android:background="@color/background"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dimen_16"
+            android:paddingVertical="@dimen/dimen_10">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen_25"
+                android:layout_height="@dimen/dimen_50"
+                android:src="@drawable/ic_notification"
+                android:tint="@color/text_gray" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyle_Regular_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mute_notification" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSwitch1"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/ic_switch_off"
+                android:tint="@color/text_gray" />
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dimen_16"
+            android:paddingVertical="@dimen/dimen_10">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_weight="1"
+                android:src="@drawable/ic_earth"
+                android:tint="@color/text_gray" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyle_Regular_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Public channel" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyle_Regular_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Anyone can find find this channel and see what's been shared."
+                    android:textColor="@color/text_gray" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/dimen_16"
+            android:paddingVertical="@dimen/dimen_10">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="@dimen/dimen_50"
+                android:layout_height="@dimen/dimen_50"
+                android:layout_weight="1"
+                android:src="@drawable/ic_keyboard"
+                android:tint="@color/text_gray" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dimen_20"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyle_Regular_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profile privacy" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextStyle_Regular_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="This channel has added privacy for your profile and phone number. Tap to learn more."
+                    android:textColor="@color/text_gray" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDeleteChannel"
+            style="@style/TextStyle_Regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/background"
+            android:drawableStart="@drawable/ic_delete"
+            android:drawablePadding="30dp"
+            android:drawableTint="@color/color4"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center|start"
+            android:padding="@dimen/dimen_10"
+            android:paddingStart="@dimen/dimen_10"
+            android:text="@string/delete_channel"
+            android:textColor="@color/color4"
+            android:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUnfollow"
+            style="@style/TextStyle_Regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10"
+            android:background="@color/background"
+            android:drawableStart="@drawable/ic_logout"
+            android:drawablePadding="30dp"
+            android:drawableTint="@color/color4"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center|start"
+            android:padding="@dimen/dimen_10"
+            android:paddingStart="@dimen/dimen_10"
+            android:text="@string/unfollow"
+            android:textColor="@color/color4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReport"
+            style="@style/TextStyle_Regular_14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            android:drawableStart="@drawable/ic_thumb_down"
+            android:drawablePadding="30dp"
+            android:drawableTint="@color/color4"
+            android:elevation="@dimen/dimen_1"
+            android:gravity="center|start"
+            android:padding="@dimen/dimen_10"
+            android:paddingStart="@dimen/dimen_10"
+            android:text="@string/report"
+            android:textColor="@color/color4" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+</layout>

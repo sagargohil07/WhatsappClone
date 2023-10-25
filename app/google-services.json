@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "318749847466",
+    "firebase_url": "https://whatapp-45b1a-default-rtdb.firebaseio.com",
+    "project_id": "whatapp-45b1a",
+    "storage_bucket": "whatapp-45b1a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318749847466:android:07b2dd6dbea864e30dc5d3",
+        "android_client_info": {
+          "package_name": "com.thinkwik.communimate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318749847466-hm4n96889molsntrjtrumh44hmdcjlv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlvLo-JcRYOh5v_jpllHHdJZLiYMKUvAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318749847466-hm4n96889molsntrjtrumh44hmdcjlv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

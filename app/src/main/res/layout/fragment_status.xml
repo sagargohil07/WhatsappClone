@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="@dimen/dimen_24"
+                tools:context=".module.fragment.story.StatusFragment">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvStatus"
+                    style="@style/TextStyle_Semi_Bold_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/dimen_16"
+                    android:text="@string/status"
+                    android:textColor="@color/text_color"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/btnOptions"
+                    android:layout_width="@dimen/dimen_25"
+                    android:layout_height="@dimen/dimen_25"
+                    android:layout_gravity="center_vertical|right"
+                    android:paddingHorizontal="@dimen/dimen_16"
+                    android:src="@drawable/ic_options"
+                    android:tint="@color/secondary_text"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/llMyStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:paddingHorizontal="@dimen/dimen_16"
+                    android:paddingVertical="@dimen/dimen_5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvStatus">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/llAddStatus"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivStatus"
+                            android:layout_width="@dimen/dimen_50"
+                            android:layout_height="@dimen/dimen_50"
+                            android:padding="@dimen/dimen_2"
+                            android:src="@drawable/profile"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearance="@style/ImageCircle50" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivStatusAdd"
+                            android:layout_width="@dimen/dimen_22"
+                            android:layout_height="@dimen/dimen_22"
+                            android:layout_marginTop="@dimen/dimen_20"
+                            android:layout_marginEnd="-5dp"
+                            android:layout_marginBottom="-5dp"
+                            android:background="@color/white"
+                            android:src="@drawable/ic_add_circle"
+                            android:tint="@color/green_100"
+                            app:contentPadding="-3dp"
+                            app:layout_constraintBottom_toBottomOf="@id/ivStatus"
+                            app:layout_constraintEnd_toEndOf="@id/ivStatus"
+                            app:shapeAppearance="@style/ImageCircle50" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <!--          <com.thinkwik.communimate.widget.story.StoryView
+                                  android:id="@+id/storyView"
+                                  android:layout_width="@dimen/dimen_50"
+                                  android:layout_height="@dimen/dimen_50"
+                                  android:layout_centerInParent="true"
+                                  app:spaceBetweenImageAndIndicator="1dp"
+                                  android:visibility="gone"
+                                  app:storyImageRadius="@dimen/dimen_6"
+                                  app:storyItemIndicatorWidth="1dp" />-->
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/dimen_16"
+                        android:gravity="center_vertical"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@id/llAddStatus"
+                        app:layout_constraintStart_toEndOf="@id/llAddStatus"
+                        app:layout_constraintTop_toTopOf="@id/llAddStatus">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvMyStatus"
+                            style="@style/TextStyle_Semi_Bold_16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/my_status"
+                            android:textColor="@color/text_color" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextStyle_Medium_14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_5"
+                            android:text="@string/tap_to_add_status_update"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="visible" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/llMyStatus">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llRecent"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/dimen_16"
+                        android:visibility="visible">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            style="@style/TextStyle_Medium_12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="@dimen/dimen_5"
+                            android:text="@string/recent_updates"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="visible" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:overScrollMode="never"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/list_item_status" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llViewed"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingHorizontal="@dimen/dimen_16"
+                        android:visibility="gone">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:id="@+id/llViewedExpand"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingVertical="@dimen/dimen_5">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                style="@style/TextStyle_Medium_12"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:text="@string/viewed_updates"
+                                android:textColor="@color/secondary_text"
+                                android:visibility="visible"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <androidx.appcompat.widget.AppCompatImageView
+                                android:id="@+id/ivViewedExpand"
+                                android:layout_width="@dimen/dimen_25"
+                                android:layout_height="@dimen/dimen_25"
+                                android:src="@drawable/ic_arrow_down"
+                                android:tint="@color/secondary_text"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvViewedStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            tools:itemCount="3"
+                            tools:listitem="@layout/list_item_status"
+                            tools:visibility="visible" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1px"
+                        android:background="#6685959F"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/llChannel"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dimen_20"
+                        android:paddingHorizontal="@dimen/dimen_16">
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvChannelTitle"
+                            style="@style/TextStyle_Semi_Bold_18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/channels"
+                            android:textColor="@color/text_color"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/ivChannelAdd"
+                            android:layout_width="@dimen/dimen_20"
+                            android:layout_height="@dimen/dimen_20"
+                            android:rotation="45"
+                            android:src="@drawable/ic_close"
+                            android:tint="@color/text_gray"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearance="@style/ImageCircle50" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvChannelInfo"
+                            style="@style/TextStyle_Medium_12"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/dimen_10"
+                            android:text="@string/stay_updated_on_topics_that_matter_to_you_find_channels_to_follow_below"
+                            android:textColor="@color/secondary_text"
+                            android:visibility="visible"
+                            app:layout_constraintTop_toBottomOf="@id/tvChannelTitle" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llFollowing"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            app:layout_constraintTop_toBottomOf="@id/tvChannelInfo">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/rvFollowingChannels"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:overScrollMode="never"
+                                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                                app:layout_constraintTop_toBottomOf="@id/tvChannelInfo"
+                                tools:itemCount="2"
+                                tools:listitem="@layout/list_item_following_channels" />
+
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/dimen_10">
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    style="@style/TextStyle_Semi_Bold_16"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="@string/find_channels"
+                                    android:textColor="@color/text_color"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <androidx.appcompat.widget.AppCompatTextView
+                                    android:id="@+id/tvSeeAll"
+                                    style="@style/TextStyle_Medium_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:drawableEnd="@drawable/ic_arrow_right"
+                                    android:drawableTint="@color/green_100"
+                                    android:text="@string/see_all"
+                                    android:textColor="@color/green_100"
+                                    app:layout_constraintStart_toStartOf="parent"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvChannels"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="@dimen/dimen_20"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintTop_toBottomOf="@id/llFollowing"
+                            tools:itemCount="10"
+                            tools:listitem="@layout/list_item_channels" />
+
+                        <androidx.appcompat.widget.AppCompatButton
+                            android:id="@+id/btnFindChannels"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/dimen_40"
+                            android:layout_marginTop="@dimen/dimen_20"
+                            android:background="@drawable/edittext_chat"
+                            android:backgroundTint="@color/green_100"
+                            android:paddingHorizontal="@dimen/dimen_20"
+                            android:paddingVertical="@dimen/dimen_10"
+                            android:text="@string/find_channels"
+                            android:textColor="@color/text_color_inverted"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/rvChannels" />
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:id="@+id/llChannelOptions"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="end"
+                            android:background="@drawable/background_menu_options"
+                            android:elevation="@dimen/dimen_1"
+                            android:orientation="vertical"
+                            android:paddingVertical="@dimen/dimen_12"
+                            android:visibility="gone"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/ivChannelAdd">
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvCreateChannel"
+                                style="@style/TextStyle_Regular_16"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="@dimen/dimen_12"
+                                android:paddingStart="@dimen/dimen_16"
+                                android:paddingEnd="@dimen/dimen_30"
+                                android:text="@string/create_channel"
+                                android:textColor="@color/text_color" />
+
+                            <androidx.appcompat.widget.AppCompatTextView
+                                android:id="@+id/tvFindChannels"
+                                style="@style/TextStyle_Regular_16"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="@dimen/dimen_12"
+                                android:paddingStart="@dimen/dimen_16"
+                                android:text="@string/find_channels"
+                                android:textColor="@color/text_color" />
+
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dimen_100" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</layout>

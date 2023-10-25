@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/mlMain"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/fragment_main_xml_constraintlayout2_scene">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/toolBarTop"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/tool_bar"
+            android:elevation="@dimen/dimen_2"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/dimen_16"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/toolbar_name"
+                style="@style/TextStyle_Semi_Bold_16"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/whastapp"
+                android:textColor="@color/white"
+                />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnCamera"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginEnd="@dimen/dimen_24"
+                android:src="@drawable/camera"
+                android:tint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnSearch"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginEnd="@dimen/dimen_16"
+                android:src="@drawable/ic_search"
+                android:tint="@color/white" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/btnOptions"
+                android:layout_width="@dimen/dimen_20"
+                android:layout_height="@dimen/dimen_20"
+                android:layout_gravity="center_vertical|right"
+                android:layout_marginEnd="@dimen/dimen_10"
+                android:src="@drawable/ic_options"
+                android:tint="@color/white" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/dimen_2"
+            app:layout_constraintTop_toBottomOf="@id/toolBarTop"
+            app:tabBackground="@color/tool_bar"
+            app:tabIconTint="@color/tab_icon"
+            app:tabIndicatorColor="@color/selected_text"
+            app:tabIndicatorHeight="@dimen/dimen_3"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/selected_text"
+            app:tabTextAppearance="@style/CustomTextAppearance"
+            app:tabTextColor="@color/unselected_text">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:icon="@drawable/ic_group" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="####" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="####" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="####" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayout" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/floatAddStatus"
+            android:layout_width="@dimen/dimen_35"
+            android:layout_height="@dimen/dimen_35"
+            android:background="@drawable/edittext_bg"
+            android:backgroundTint="@color/tool_bar"
+            android:padding="@dimen/dimen_5"
+            android:src="@drawable/ic_edit"
+            android:tint="@color/text_color"
+            app:layout_constraintBottom_toBottomOf="@id/floatButton"
+            app:layout_constraintEnd_toEndOf="@id/floatButton"
+            app:layout_constraintStart_toStartOf="@id/floatButton" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/floatButton"
+            android:layout_width="@dimen/dimen_50"
+            android:layout_height="@dimen/dimen_50"
+            android:layout_marginEnd="@dimen/dimen_16"
+            android:layout_marginBottom="@dimen/dimen_16"
+            android:background="@drawable/edittext_bg"
+            android:backgroundTint="@color/green_dark_600"
+            android:padding="@dimen/dimen_14"
+            android:src="@drawable/ic_chat"
+            android:tint="@color/text_color_inverted"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <FrameLayout
+            android:id="@+id/frameLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/llMenu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="end"
+                android:paddingTop="?actionBarSize"
+                android:visibility="gone">
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="@dimen/dimen_150"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginVertical="@dimen/dimen_1"
+                    android:layout_marginEnd="@dimen/dimen_5"
+                    android:background="@drawable/edittext_bg"
+                    android:backgroundTint="@color/tool_bar"
+                    android:elevation="@dimen/dimen_1"
+                    android:orientation="vertical">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnProfile"
+                        style="@style/TextStyle_Regular_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/dimen_8"
+                        android:paddingStart="@dimen/dimen_10"
+                        android:text="@string/profile"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnNewGroup"
+                        style="@style/TextStyle_Regular_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/dimen_8"
+                        android:paddingStart="@dimen/dimen_10"
+                        android:text="@string/new_group"
+                        android:textColor="@color/white" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnLogout"
+                        style="@style/TextStyle_Regular_12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingVertical="@dimen/dimen_8"
+                        android:paddingStart="@dimen/dimen_10"
+                        android:text="@string/logout"
+                        android:textColor="@color/white" />
+
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </FrameLayout>
+
+        </FrameLayout>
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
+</layout>
