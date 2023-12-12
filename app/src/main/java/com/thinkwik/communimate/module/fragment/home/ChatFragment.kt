@@ -392,8 +392,7 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(R.layout.fragment_chat),
                     Log.d(
                         "media",
                         "onActivityResult: selectedAudio $selectedFile fileName : $displayName"
-                    )/*Glide.with(requireContext()).load(selectedImage).circleCrop()
-                            .into(binding.ivProgfile)*/
+                    )
                 }
             }
         } else if (requestCode == VIDEO_REQUEST_CODE) {
@@ -423,71 +422,19 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(R.layout.fragment_chat),
         }
 
         binding.btnSendMedia.setOnClickListener {
-            /*dialog.show()
-            uploadMedia(mediaType)*/
             val uploadServiceIntent = Intent(requireActivity(), UploadService::class.java)
+            uploadServiceIntent.putExtra("uploadFor", "chat")
             uploadServiceIntent.putExtra("mediaType", mediaType)
             uploadServiceIntent.putExtra("mediaUrl", selectedFile)
             uploadServiceIntent.putExtra("audioFileName", binding.tvAudioName.text.toString())
-
             uploadServiceIntent.putExtra("senderUid", senderUid)
             uploadServiceIntent.putExtra("roomId", roomId)
-
             uploadServiceIntent.putExtra("name", args.name)
             uploadServiceIntent.putExtra("token", args.token)
-
-
             requireActivity().startService(uploadServiceIntent)
             clearData()
         }
     }
-
-    /*
-        private fun uploadMedia(mediaType: String) {
-            val progressDialog = ProgressDialog(requireContext())
-            progressDialog.setTitle("Sending...")
-            progressDialog.show()
-
-            val mediaUrl = selectedFile
-            Log.d("media-send", "uploadMedia: $mediaUrl")
-
-            val reference = storage.reference.child("Media").child(Date().time.toString())
-            reference.putFile(mediaUrl!!).addOnCompleteListener {
-                Log.d("media-send", "uploadData 1: ${it.result} $it")
-                reference.downloadUrl.addOnCompleteListener { task ->
-                    Log.d("media-send", "uploadData 2: ${task.result} $task")
-                    sendMessage(mediaType, task.result.toString())
-                    progressDialog.dismiss()
-                }
-            }.addOnProgressListener {
-                val totalKb = it.totalByteCount / (1024 * 1024)
-                val transferdKb = it.bytesTransferred / (1024 * 1024)
-                progressDialog.setMessage("$transferdKb Mb/$totalKb Mb")
-            }.addOnFailureListener {
-                dialog.dismiss()
-                progressDialog.dismiss()
-                Toast.makeText(requireActivity(), "${it.message}", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        private fun sendMessage(mediaType: String, url: String) {
-            val fileModel = if (mediaType == "audio") {
-                FileModel(url, binding.tvAudioName.text.toString())
-            } else {
-                FileModel(url, "")
-            }
-            val messageModel = MessageModel("", mediaType, "", fileModel, senderUid, Date().time)
-            val randomKey = database.reference.push().key
-
-            database.reference.child("chats").child(roomId).child("message").child(randomKey!!)
-                .setValue(messageModel).addOnCompleteListener {
-                    binding.etChat.text!!.clear()
-                    dialog.dismiss()
-                    clearData()
-                }
-
-        }
-    */
 
     @OptIn(DelicateCoroutinesApi::class)
     private fun sendNotification(body: String) {

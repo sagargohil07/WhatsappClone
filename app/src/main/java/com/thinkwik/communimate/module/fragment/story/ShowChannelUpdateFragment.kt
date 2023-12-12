@@ -3,6 +3,7 @@ package com.thinkwik.communimate.module.fragment.story
 import android.Manifest
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -31,7 +32,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
-import com.thinkwik.communimate.MediaType
+import com.thinkwik.communimate.UploadFor
 import com.thinkwik.communimate.OnMediaUpload
 import com.thinkwik.communimate.R
 import com.thinkwik.communimate.base.BaseFragment
@@ -40,6 +41,7 @@ import com.thinkwik.communimate.module.adapter.ChannelsUpdatesAdapter
 import com.thinkwik.communimate.module.model.ChannelUpdatesModel
 import com.thinkwik.communimate.module.model.ChannelsModel
 import com.thinkwik.communimate.requireMainActivity
+import com.thinkwik.communimate.services.UploadService
 import com.thinkwik.communimate.utils.DBHelper
 import com.thinkwik.communimate.utils.performBackspaceAction
 import com.thinkwik.communimate.utils.runOnUiThread
@@ -59,6 +61,8 @@ import kotlinx.coroutines.tasks.await
 import kotlinx.coroutines.withContext
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -243,8 +247,20 @@ class ShowChannelUpdateFragment :
             }
         }
         binding.btnSendMedia.setOnClickListener {
-            uploadImage(bitmap!!)
-            requireMainActivity().uploadImage(bitmap!!,MediaType.CHANNEL_UPDATE)
+            /*uploadImage(bitmap!!)
+            requireMainActivity().uploadImage(bitmap!!,UploadFor.CHANNEL_UPDATE)*/
+            val selectedImageFile = bitmapToUri(requireActivity(),bitmap!!)
+            val uploadServiceIntent = Intent(requireActivity(), UploadService::class.java)
+            uploadServiceIntent.putExtra("uploadFor", "channel")
+            uploadServiceIntent.putExtra("mediaType", "image")
+            uploadServiceIntent.putExtra("mediaUrl", selectedImageFile)
+
+            uploadServiceIntent.putExtra("channelName", channelModel.channelName)
+            uploadServiceIntent.putExtra("channelImageCaptions", binding.etCaption.text.toString().trim())
+            requireActivity().startService(uploadServiceIntent)
+            selectedImage = null
+            binding.llSendMedia.isVisible = false
+            getNewUpdate()
         }
         binding.btnSendClose.setOnClickListener {
             selectedImage = null
@@ -438,11 +454,7 @@ class ShowChannelUpdateFragment :
                 }
             } catch (exception: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(
-                        requireContext(),
-                        "Story upload failed: ${exception.message}",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    Toast.makeText(requireContext(), "Story upload failed: ${exception.message}", Toast.LENGTH_SHORT).show()
                     dialog.dismiss()
                 }
             }
@@ -497,6 +509,24 @@ class ShowChannelUpdateFragment :
         binding.llSendMedia.isVisible = false
 
         getNewUpdate()
+    }
+
+    private fun bitmapToUri(context: Context, bitmap: Bitmap): Uri? {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val fileName = "screenshot_$timeStamp.jpg"
+
+        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName)
+
+        try {
+            FileOutputStream(file).use { out ->
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return null
+        }
+
+        return Uri.fromFile(file)
     }
 
 }

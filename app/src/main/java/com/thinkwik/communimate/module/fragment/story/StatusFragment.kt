@@ -50,8 +50,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_status),
-    OnMediaUpload {
+class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_status) {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var storage: FirebaseStorage
@@ -522,6 +521,7 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             if (photoFile != null) {
+                selectedImage = data?.data
                 val imageBitmap = BitmapFactory.decodeFile(photoFile!!.absolutePath)
                 val bundle = Bundle()
                 bundle.putParcelable("imageBitmap", imageBitmap)
@@ -550,10 +550,6 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
         } else {
             ContextCompat.getDrawable(requireContext(), R.drawable.bg_circle_pending)
         }
-    }
-
-    override fun onMediaUploaded(url: String) {
-        requireActivity()
     }
 
 }

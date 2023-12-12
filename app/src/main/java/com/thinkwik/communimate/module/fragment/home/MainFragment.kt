@@ -62,7 +62,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         private const val REQUEST_IMAGE_GALLARY = 102
     }
 
-    private var selectedTabPos = 1
     private var photoFile: File? = null
     private var selectedImage: Uri? = null
 
@@ -90,7 +89,6 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
                 3 -> tab.text = getString(R.string.calls)
             }
         }.attach()
-        //if (binding.viewPager.adapter == null) binding.viewPager.currentItem
 
         val layout = (binding.tabLayout.getChildAt(0) as LinearLayout).getChildAt(0) as LinearLayout
         val layoutParams = layout.layoutParams as LinearLayout.LayoutParams
@@ -316,13 +314,5 @@ class MainFragment : BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             }
         }
     }
-
-    /*private fun setupViewPager(mPager: CustomViewPager) {
-        val pagerAdapter = ViewPagerAdapter(requireActivity().supportFragmentManager)
-        pagerAdapter.addFrag(ChatListFragment(), "Chats")
-        pagerAdapter.addFrag(StatusFragment(), "Updates")
-        pagerAdapter.addFrag(CallsHistoryFragment(), "Calls")
-        mPager.adapter = pagerAdapter
-    }*/
 }
 

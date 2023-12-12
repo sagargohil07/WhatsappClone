@@ -2,11 +2,14 @@ package com.thinkwik.communimate.module.fragment.story
 
 import android.app.AlertDialog
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -31,6 +34,7 @@ import com.thinkwik.communimate.base.BaseFragment
 import com.thinkwik.communimate.databinding.FragmentAddTextStoryBinding
 import com.thinkwik.communimate.prefs.PreferenceStorage
 import com.thinkwik.communimate.requireMainActivity
+import com.thinkwik.communimate.services.UploadService
 import com.thinkwik.communimate.utils.DBHelper
 import com.thinkwik.communimate.utils.performBackspaceAction
 import com.thinkwik.communimate.utils.runOnUiThread
@@ -44,6 +48,9 @@ import com.vanniktech.ui.hideKeyboard
 import com.vanniktech.ui.showKeyboardAndFocus
 import org.koin.android.ext.android.inject
 import java.io.ByteArrayOutputStream
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -61,6 +68,7 @@ class AddTextStoryFragment :
 
     private lateinit var dialog: AlertDialog
     private lateinit var screenShotImage: Bitmap
+    private var selectedImageFile: Uri? = null
 
     private val prefs: PreferenceStorage by inject()
 
@@ -152,7 +160,14 @@ class AddTextStoryFragment :
             requireMainActivity().hideKeyboard(binding.etStatus)
             Handler(Looper.getMainLooper()).postDelayed({
                 screenShotImage = captureScreenshot(binding.llViewContainer)
-                uploadImage(screenShotImage)
+                selectedImageFile = bitmapToUri(requireMainActivity(),screenShotImage)
+                val uploadServiceIntent = Intent(requireActivity(), UploadService::class.java)
+                uploadServiceIntent.putExtra("uploadFor", "status")
+                uploadServiceIntent.putExtra("mediaType", "image")
+                uploadServiceIntent.putExtra("mediaUrl", selectedImageFile)
+                requireActivity().startService(uploadServiceIntent)
+                findNavController().popBackStack()
+                //uploadImage(screenShotImage)
             }, 200)
         }
     }
@@ -176,6 +191,22 @@ class AddTextStoryFragment :
         return bitmap
     }
 
+    private fun bitmapToUri(context: Context, bitmap: Bitmap): Uri? {
+        val timeStamp: String = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val fileName = "screenshot_$timeStamp.jpg"
+        val file = File(context.getExternalFilesDir(Environment.DIRECTORY_PICTURES), fileName)
+        try {
+            FileOutputStream(file).use { out ->
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+            return null
+        }
+
+        return Uri.fromFile(file)
+    }
+
     private fun uploadImage(bitmap: Bitmap) {
         dialog.show()
         val reference = storage.reference.child("Story").child("${Date().time}.png")
@@ -184,9 +215,7 @@ class AddTextStoryFragment :
             .addOnSuccessListener {
                 reference.downloadUrl.addOnSuccessListener { task ->
                     Log.d("add-story", "uploadImage: uri :  ${task.toString()}")
-                    /* Log.d("otp", "uploadData: ${task.result.toString()} ${task.toString()}")
-                     val userMap = mapOf("imageUrl" to task.result.toString())
-                     */
+
                     addStory(task.toString())
                 }
             }

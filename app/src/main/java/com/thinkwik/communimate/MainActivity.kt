@@ -57,8 +57,8 @@ fun Fragment.requireMainActivity() = requireNotNull(activity as? MainActivity) {
     "Fragment $this in not attached to DashboardTabletActivity"
 }
 
-enum class MediaType {
-    STATUS, CHANNEL_UPDATE
+enum class UploadFor {
+    CHAT,STATUS, CHANNEL_UPDATE
 }
 
 interface OnMediaUpload {
@@ -105,7 +105,6 @@ class MainActivity : AppCompatActivity() {
     }*/
 
     override
-
     fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -486,8 +485,8 @@ class MainActivity : AppCompatActivity() {
         recreate()
     }
 
-    fun uploadImage(bitmap: Bitmap, mediaType: MediaType) {
-        /*dialog.show()*/
+    /*
+    fun uploadImage(bitmap: Bitmap, uploadFor: UploadFor) {
         // Use a coroutine
         lifecycleScope.launch(Dispatchers.IO) {
             try {
@@ -500,12 +499,12 @@ class MainActivity : AppCompatActivity() {
                 // Process the result on the main thread
                 withContext(Dispatchers.Main) {
                     Log.d("add-story", "uploadImage: uri :  $downloadUrl")
-                    when (mediaType) {
-                        MediaType.STATUS -> {
+                    when (uploadFor) {
+                        UploadFor.STATUS -> {
                             addStory(downloadUrl.toString())
                         }
 
-                        MediaType.CHANNEL_UPDATE -> {
+                        UploadFor.CHANNEL_UPDATE -> {
                             onMediaUploaded?.onMediaUploaded(downloadUrl.toString())
                         }
 
@@ -519,7 +518,7 @@ class MainActivity : AppCompatActivity() {
                         "Story upload failed: ${exception.message}",
                         Toast.LENGTH_SHORT
                     ).show()
-                    /*dialog.dismiss()*/
+                    *//*dialog.dismiss()*//*
                 }
             }
         }
@@ -573,12 +572,6 @@ class MainActivity : AppCompatActivity() {
                 getCurrentDateTimeFormatted()
             )
             onMediaUploaded?.onMediaUploaded(url)
-
-            /*// Process the result on the main thread
-            withContext(Dispatchers.Main) {
-                dialog.dismiss()
-                findNavController().popBackStack()
-            }*/
         }
     }
 
@@ -617,6 +610,8 @@ class MainActivity : AppCompatActivity() {
         Log.i("Notify", "$builder")
         // Issue the notification
         notificationManager.notify(1, builder.build())
-    }
+    }*/
+
+
 
 }
