@@ -41,7 +41,7 @@ class PushNotificationService : FirebaseMessagingService() {
             NotificationManager.IMPORTANCE_HIGH
         )
         getSystemService(NotificationManager::class.java).createNotificationChannel(channel)
-        val context: Context
+        val context  = this
 
         val notificationBuilder = Notification.Builder(this, channelId)
             .setContentTitle(title)

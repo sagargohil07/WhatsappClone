@@ -234,11 +234,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
                         if (it.exception is FirebaseAuthInvalidCredentialsException) {
                             // The verification code entered was invalid
                             Log.d("otp", "Error: ${it.isSuccessful} ${it.exception}")
-                            Toast.makeText(
-                                requireContext(),
-                                "The verification code is invalid",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                            Toast.makeText(requireContext(), "The verification code is invalid", Toast.LENGTH_SHORT).show()
                         }
                     }
                 }
