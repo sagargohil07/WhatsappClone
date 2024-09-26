@@ -110,5 +110,6 @@ dependencies {
 
     implementation ("com.vanniktech:emoji:0.18.0-SNAPSHOT")
     implementation ("com.vanniktech:emoji-google:0.18.0-SNAPSHOT")
+    implementation ("com.github.appsfeature:otp-view:1.1")
 
 }

@@ -251,7 +251,7 @@
     <string name="verify_your_nphone_number">Verify Your \nPhone Number</string>
     <string name="we_will_send_you_one_time_password_on_your_phone">We will send you One Time Password on your phone</string>
     <string name="_91">+91</string>
-    <string name="enter_number">Enter number</string>
+    <string name="enter_number">phone number</string>
     <string name="next">Next</string>
     <string name="profile">Profile</string>
     <string name="add_participants">Add participants</string>
@@ -369,4 +369,7 @@
     <string name="delete_channel">Delete Channel</string>
     <string name="are_you_sure_want_to_delete_your_channel">Are you sure want to delete your channel</string>
     <string name="channel_info">Channel Info</string>
+    <string name="LBL_WHASTAPP_VERIFY_NUMBER">WhatsaApp will need to verify your phone number.Carrier charge may apply. What\'s my number ?</string>
+    <string name="LBL_VERIFYING_YOUR_NUMBER">Verifying your number</string>
+    <string name="waiting_to_automatically_detect_on_sms_sent_to_1_wrong_number">Waiting to automatically detect on SMS sent to %1$ .Wrong number?</string>
 </resources>
