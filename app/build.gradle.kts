@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId = "com.thinkwik.communimate"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -108,8 +108,8 @@ dependencies {
     implementation("androidx.emoji2:emoji2-views:$emoji2_version")
     implementation("androidx.emoji2:emoji2-views-helper:$emoji2_version")
 
-    implementation ("com.vanniktech:emoji:0.18.0-SNAPSHOT")
-    implementation ("com.vanniktech:emoji-google:0.18.0-SNAPSHOT")
-    implementation ("com.github.appsfeature:otp-view:1.1")
+    implementation("com.vanniktech:emoji-google:0.21.0")
+    /*implementation ("com.vanniktech:emoji:0.21.0")
+    implementation ("com.vanniktech:emoji-google:0.18.0-SNAPSHOT")*/
 
 }

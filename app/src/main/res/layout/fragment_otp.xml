@@ -29,20 +29,16 @@
                     android:src="@drawable/ic_arrow_back"
                     android:tint="@color/green" />
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="250dp"
-                    android:src="@drawable/otp" />
-
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTitle"
-                    style="@style/TextStyle_Semi_Bold_20"
+                    style="@style/TextStyle_Semi_Bold_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_30"
-                    android:text="@string/enter_otp"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/textSize_28" />
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dimen_10"
+                    android:text="@string/LBL_VERIFYING_YOUR_NUMBER"
+                    android:textColor="@color/green_100"
+                    />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfo"
@@ -50,106 +46,121 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/dimen_10"
-                    android:text="@string/you_will_get_otp_via_sms"
+                    android:gravity="center"
+                    android:textSize="@dimen/textSize_14"
+                    android:layout_marginHorizontal="@dimen/dimen_24"
+                    android:text="@string/waiting_to_automatically_detect_on_sms_sent_to_1_wrong_number"
                     android:textColor="@color/text_color" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
-                    android:id="@+id/llOtp"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:layout_marginHorizontal="@dimen/dimen_30"
-                    android:layout_marginTop="@dimen/dimen_50"
+                    android:layout_marginTop="@dimen/dimen_20"
                     android:gravity="center"
-                    app:layout_constraintTop_toBottomOf="@id/tvTitle">
+                    android:layout_height="wrap_content">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/otp1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_otp_bg"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/llOtp"
+                        android:layout_width="150dp"
+                        android:layout_height="@dimen/dimen_50"
                         android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:nextFocusRight="@+id/otp2"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color" />
+                        android:paddingHorizontal="@dimen/dimen_10"
+                        android:background="@drawable/bg_otp_container"
+                        app:layout_constraintTop_toBottomOf="@id/tvTitle">
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/otp2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_otp_bg"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:nextFocusRight="@+id/otp3"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color" />
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/otp1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/otp_edittext_otp_bg"
+                            android:gravity="center"
+                            android:hint="—"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:nextFocusRight="@+id/otp2"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/otp3"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_otp_bg"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:nextFocusRight="@+id/otp4"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color" />
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/otp2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:hint="—"
+                            android:layout_weight="1"
+                            android:background="@drawable/otp_edittext_otp_bg"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:nextFocusRight="@+id/otp3"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/otp4"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_otp_bg"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:nextFocusRight="@+id/otp5"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color" />
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/otp3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/otp_edittext_otp_bg"
+                            android:gravity="center"
+                            android:hint="—"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:nextFocusRight="@+id/otp4"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" />
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/otp5"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_otp_bg"
-                        android:gravity="center"
-                        android:imeOptions="actionNext"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:nextFocusRight="@+id/otp6"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color" />
+                        <View
+                            android:layout_width="@dimen/dimen_10"
+                            android:layout_height="match_parent"/>
 
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/otp6"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/dimen_5"
-                        android:layout_weight="1"
-                        android:background="@drawable/edittext_otp_bg"
-                        android:gravity="center"
-                        android:imeOptions="actionDone"
-                        android:inputType="numberDecimal"
-                        android:maxLength="1"
-                        android:singleLine="true"
-                        android:textColor="@color/text_color" />
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/otp4"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/otp_edittext_otp_bg"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:hint="—"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:nextFocusRight="@+id/otp5"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/otp5"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:hint="—"
+                            android:background="@drawable/otp_edittext_otp_bg"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:nextFocusRight="@+id/otp6"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" />
+
+                        <androidx.appcompat.widget.AppCompatEditText
+                            android:id="@+id/otp6"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:hint="—"
+                            android:background="@drawable/otp_edittext_otp_bg"
+                            android:gravity="center"
+                            android:imeOptions="actionDone"
+                            android:inputType="numberDecimal"
+                            android:maxLength="1"
+                            android:singleLine="true"
+                            android:textColor="@color/text_color" />
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 

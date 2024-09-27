@@ -48,11 +48,12 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     }
 
     private fun initListener() {
-
+        binding.etCountryName.setOnClickListener {
+            showBottomSheet()
+        }
         binding.etCountryCode.setOnClickListener {
             showBottomSheet()
         }
-
         binding.etNumber.setDebounce {
             runOnUiThread {
                 validateField()
@@ -111,7 +112,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         ) {
             countryCode = "+${it.code}"
             countryName = it.name
-            binding.etCountryCode.text = countryCode
+            binding.etCountryName.setText(it.name)
+            binding.etCountryCode.setText(countryCode)
             dialog.dismiss()
         }
 

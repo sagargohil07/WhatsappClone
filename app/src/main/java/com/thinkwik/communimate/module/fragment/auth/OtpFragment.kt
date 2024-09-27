@@ -40,7 +40,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
     private var database: FirebaseDatabase? = null
     private lateinit var callback: PhoneAuthProvider.OnVerificationStateChangedCallbacks
 
-    private val args: OtpFragmentArgs by navArgs()
+    //private val args: OtpFragmentArgs by navArgs()
     private val prefs: PreferenceStorage by inject()
     private var verificationId: String = ""
     private var timerCount = 60
@@ -59,11 +59,10 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
     }
 
     private fun init() {
-
         phoneNumber = arguments?.getString("phoneNumber").toString()
         countryCode = arguments?.getString("countryCode").toString()
         countryName = arguments?.getString("countryName").toString()
-
+        binding.tvInfo.text = getString(R.string.waiting_to_automatically_detect_on_sms_sent_to_1_wrong_number, "$countryCode $phoneNumber")
         initListener()
         val builder =
             AlertDialog.Builder(requireContext()).setMessage("Verifying....").setCancelable(false)
@@ -262,7 +261,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
         binding.tvResendOtp.isEnabled = false
         binding.tvResendOtp.alpha = 0.5f
         val timer = Timer()
-        timer.scheduleAtFixedRate(timerTask {
+        timer.schedule(timerTask {
             timerCount--
             runOnUiThread {
                 binding.tvResendOtp.text = "Resend OTP in $timerCount seconds"

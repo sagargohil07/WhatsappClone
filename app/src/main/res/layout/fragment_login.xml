@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -8,7 +9,9 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnNext"
             android:fillViewport="true"
             android:overScrollMode="never">
 
@@ -18,44 +21,64 @@
                 android:background="@color/background_common"
                 android:orientation="vertical"
                 android:padding="24dp"
-                tools:context=".module.fragment.auth.LoginFragment">
+                tools:context=".module.fragment.auth.LoginFragment"
+                >
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="250dp"
-                    android:src="@drawable/login" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTitle"
-                    style="@style/TextStyle_Semi_Bold_20"
+                    style="@style/TextStyle_Semi_Bold_16"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_30"
-                    android:text="@string/verify_your_nphone_number"
+                    android:text="Enter your phone number"
+                    android:gravity="center"
                     android:textColor="@color/text_color"
-                    android:textSize="@dimen/textSize_28" />
+                    android:textSize="@dimen/textSize_18" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfo"
-                    style="@style/TextStyle_Regular_16"
+                    style="@style/TextStyle_Regular_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/dimen_10"
-                    android:text="@string/we_will_send_you_one_time_password_on_your_phone"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/dimen_20"
+                    android:text="@string/LBL_WHASTAPP_VERIFY_NUMBER"
                     android:textColor="@color/text_color" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/etCountryName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dimen_60"
+                    android:drawableEnd="@drawable/ic_arrow_drop_down_filled"
+                    android:backgroundTint="@color/green_100"
+                    android:drawableTint="@color/green_100"
+                    android:gravity="start|center"
+                    android:maxEms="6"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:inputType="none"
+                    android:padding="@dimen/dimen_10"
+                    android:layout_marginTop="30dp"
+                    android:hint="Choose a country"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/text_color"
+                    android:textSize="@dimen/textSize_14" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dimen_40"
-                    android:layout_marginTop="@dimen/dimen_50">
+                    android:layout_marginHorizontal="@dimen/dimen_60"
+                    android:layout_marginTop="@dimen/dimen_10">
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/etCountryCode"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="@dimen/dimen_8"
-                        android:background="@drawable/edittext_otp_bg"
-                        android:drawableEnd="@drawable/ic_expand_down"
+                        android:backgroundTint="@color/green_100"
                         android:drawableTint="@color/text_color"
                         android:gravity="start|center"
                         android:maxEms="6"
@@ -70,7 +93,7 @@
                         android:id="@+id/etNumber"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/edittext_otp_bg"
+                        android:backgroundTint="@color/green_100"
                         android:hint="@string/enter_number"
                         android:inputType="numberDecimal"
                         android:paddingHorizontal="16dp"
@@ -80,21 +103,27 @@
 
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btnNext"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/dimen_40"
-                    android:layout_marginTop="@dimen/dimen_20"
-                    android:alpha="0.5"
-                    android:background="@drawable/button_bg"
-                    android:backgroundTint="#008069"
-                    android:enabled="false"
-                    android:text="@string/next"
-                    android:textColor="@color/white" />
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
         </androidx.core.widget.NestedScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnNext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_40"
+            android:alpha="0.5"
+            android:layout_marginHorizontal="@dimen/dimen_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:background="@drawable/bg_circle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:backgroundTint="#008069"
+            android:enabled="false"
+            android:text="@string/next"
+            android:layout_marginBottom="@dimen/dimen_50"
+            android:textColor="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

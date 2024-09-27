@@ -21,6 +21,7 @@
                 android:background="@color/background_common"
                 android:orientation="vertical"
                 android:padding="24dp"
+                tools:context=".module.fragment.auth.LoginFragment"
                 >
 
 
