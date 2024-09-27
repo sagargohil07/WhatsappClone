@@ -19,6 +19,7 @@ import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.fragment.app.Fragment
 import com.thinkwik.communimate.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.thinkwik.communimate.module.model.UserModel
 
 fun Fragment?.runOnUiThread(action: () -> Unit) {
     this ?: return
@@ -133,4 +134,11 @@ fun AppCompatEditText.performBackspaceAction() {
             editable?.delete(selectionStart, selectionEnd);
         }
     }
+}
+
+//help to remove duplicate record from list
+fun <T> removeDuplicatesRecords(items: ArrayList<T>): ArrayList<T> {
+    // Use a LinkedHashSet to preserve the order of the elements
+    val uniqueItems = LinkedHashSet(items)
+    return ArrayList(uniqueItems)
 }

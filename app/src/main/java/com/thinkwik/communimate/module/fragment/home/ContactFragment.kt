@@ -31,6 +31,7 @@ import com.thinkwik.communimate.module.model.ContactsModel
 import com.thinkwik.communimate.module.model.UserModel
 import com.thinkwik.communimate.requireMainActivity
 import com.thinkwik.communimate.utils.ContactManager
+import com.thinkwik.communimate.utils.removeDuplicatesRecords
 import com.thinkwik.communimate.utils.runOnUiThread
 
 class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_contact) {
@@ -103,7 +104,8 @@ class ContactFragment : BaseFragment<FragmentContactBinding>(R.layout.fragment_c
                     runOnUiThread {
                         combinedList.clear()
                         combinedList = combineLists(userList, contactList)
-                        contactAdapter.updateList(combinedList)
+                        val uniqueList = removeDuplicatesRecords(combinedList)
+                        contactAdapter.updateList(uniqueList)
                     }
                 }
 

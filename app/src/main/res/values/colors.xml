@@ -13,7 +13,7 @@
 
     <color name="menu_background_color">#FFFFFFFF</color>
     <color name="background_edittext">#FFFFFFFF</color>
-    <color name="background_edittext_otp">#F1F6F7</color>
+    <color name="background_edittext_otp">#FFFFFFFF</color>
 
     <color name="background_channel_tag">#EDF8F5</color>
 

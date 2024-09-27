@@ -23,6 +23,7 @@ import com.thinkwik.communimate.module.model.ContactsModel
 import com.thinkwik.communimate.module.model.UserModel
 import com.thinkwik.communimate.prefs.PreferenceStorage
 import com.thinkwik.communimate.utils.ContactManager
+import com.thinkwik.communimate.utils.removeDuplicatesRecords
 import com.thinkwik.communimate.utils.runOnUiThread
 import org.koin.android.ext.android.inject
 
@@ -75,7 +76,9 @@ class ChatListFragment : BaseFragment<FragmentChatListBinding>(R.layout.fragment
                 runOnUiThread {
                     combinedList.clear()
                     combinedList = combineLists(userList, contactList)
-                    usersAdapter.updateList(combinedList)
+                    combinedList = combinedList
+                    val uniqueList = removeDuplicatesRecords(combinedList)
+                    usersAdapter.updateList(uniqueList)
                 }
             }
 
