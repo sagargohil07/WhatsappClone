@@ -50,10 +50,10 @@ android {
 dependencies {
 
     implementation("androidx.core:core-ktx:1.9.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("androidx.appcompat:appcompat:1.7.0")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.emoji2:emoji2-emojipicker:1.4.0")
+    implementation("androidx.emoji2:emoji2-emojipicker:1.5.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -95,7 +95,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.5.1")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
 
-    implementation("androidx.browser:browser:1.3.0")
+    implementation("androidx.browser:browser:1.8.0")
 
     implementation("com.squareup.okhttp3:okhttp:4.10.0")
 
@@ -103,13 +103,12 @@ dependencies {
     /*implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
     implementation(files("libs/sinch-android-rtc-6.2.8+ee41053e.aar"))*/
 
-    val emoji2_version = "1.4.0"
-    implementation("androidx.emoji2:emoji2:$emoji2_version")
-    implementation("androidx.emoji2:emoji2-views:$emoji2_version")
-    implementation("androidx.emoji2:emoji2-views-helper:$emoji2_version")
+    implementation("androidx.emoji2:emoji2:1.5.0")
+    implementation("androidx.emoji2:emoji2-views:1.5.0")
+    implementation("androidx.emoji2:emoji2-views-helper:1.5.0")
 
-    implementation ("com.vanniktech:emoji:0.18.0-SNAPSHOT")
-    implementation ("com.vanniktech:emoji-google:0.18.0-SNAPSHOT")
+    implementation ("com.vanniktech:emoji:0.21.0")
+    implementation ("com.vanniktech:emoji-google:0.21.0")
     implementation ("com.github.appsfeature:otp-view:1.1")
 
 }
