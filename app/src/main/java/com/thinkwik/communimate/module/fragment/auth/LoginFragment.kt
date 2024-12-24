@@ -17,6 +17,7 @@ import com.thinkwik.communimate.databinding.FragmentLoginBinding
 import com.thinkwik.communimate.extensions.setDebounce
 import com.thinkwik.communimate.module.adapter.CountryCodeAdapter
 import com.thinkwik.communimate.module.model.CountryCodeModel
+import com.thinkwik.communimate.requireMainActivity
 import com.thinkwik.communimate.utils.runOnUiThread
 import org.json.JSONArray
 import org.json.JSONObject
@@ -41,6 +42,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         initListener()
         fetchCountryCodes()
         auth = FirebaseAuth.getInstance()
+        requireMainActivity().showKeyboard(binding.etNumber)
 
         /*if (auth != null) {
             findNavController().navigate(LoginFragmentDirections.toNavHomeFragment())
@@ -50,6 +52,10 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
     private fun initListener() {
 
         binding.etCountryCode.setOnClickListener {
+            showBottomSheet()
+        }
+
+        binding.etCountryName.setOnClickListener {
             showBottomSheet()
         }
 
@@ -111,7 +117,8 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(R.layout.fragment_login
         ) {
             countryCode = "+${it.code}"
             countryName = it.name
-            binding.etCountryCode.text = countryCode
+            binding.etCountryCode.setText(countryCode)
+            binding.etCountryName.setText(countryName)
             dialog.dismiss()
         }
 

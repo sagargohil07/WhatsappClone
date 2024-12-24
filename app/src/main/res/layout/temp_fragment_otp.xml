@@ -39,7 +39,7 @@
                     android:layout_marginTop="@dimen/dimen_30"
                     android:text="@string/LBL_VERIFYING_YOUR_NUMBER"
                     android:textColor="@color/green_100"
-                    />
+                     />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvInfo"
@@ -75,8 +75,6 @@
                             android:background="@drawable/otp_edittext_otp_bg"
                             android:gravity="center"
                             android:hint="-"
-                            android:focusable="true"
-                            android:focusedByDefault="true"
                             android:textColorHint="@color/secondary_text"
                             android:imeOptions="actionNext"
                             android:inputType="numberDecimal"
@@ -89,10 +87,10 @@
                             android:id="@+id/otp2"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:hint="-"
                             android:layout_weight="1"
                             android:background="@drawable/otp_edittext_otp_bg"
                             android:gravity="center"
-                            android:hint="-"
                             android:imeOptions="actionNext"
                             android:inputType="numberDecimal"
                             android:maxLength="1"
@@ -114,7 +112,6 @@
                             android:nextFocusRight="@+id/otp4"
                             android:singleLine="true"
                             android:textColor="@color/text_color" />
-
 
                         <View
                             android:layout_width="@dimen/dimen_10"

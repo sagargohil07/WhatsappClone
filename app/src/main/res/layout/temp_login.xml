@@ -5,8 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".module.fragment.auth.LoginFragment">
+        android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -55,13 +54,9 @@
                     android:drawableTint="@color/green_100"
                     android:gravity="start|center"
                     android:maxEms="6"
-                    android:focusable="false"
-                    android:focusableInTouchMode="false"
-                    android:cursorVisible="false"
                     android:padding="@dimen/dimen_10"
                     android:layout_marginTop="30dp"
-                    android:hint="Choose a country"
-                    android:text="India"
+                    android:text="Choose a country"
                     android:textAlignment="center"
                     android:textColor="@color/text_color"
                     android:textColorHint="@color/dark_300"
@@ -77,13 +72,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_marginEnd="@dimen/dimen_8"
-                        android:backgroundTint="@color/green_100"
+                        android:backgroundTint="@color/green_100" 
                         android:drawableTint="@color/text_color"
                         android:gravity="start|center"
-                        android:clickable="true"
-                        android:focusable="false"
-                        android:focusableInTouchMode="false"
-                        android:cursorVisible="false"
                         android:maxEms="6"
                         android:padding="@dimen/dimen_10"
                         android:text="@string/_91"
