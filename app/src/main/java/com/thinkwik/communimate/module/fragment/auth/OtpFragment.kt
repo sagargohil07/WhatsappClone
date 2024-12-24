@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.FirebaseException
@@ -27,8 +28,11 @@ import com.thinkwik.communimate.R
 import com.thinkwik.communimate.base.BaseFragment
 import com.thinkwik.communimate.databinding.FragmentOtpBinding
 import com.thinkwik.communimate.prefs.PreferenceStorage
+import com.thinkwik.communimate.requireMainActivity
 import com.thinkwik.communimate.utils.checkLength
 import com.thinkwik.communimate.utils.runOnUiThread
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import java.util.Timer
 import java.util.concurrent.TimeUnit
@@ -63,6 +67,17 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
         phoneNumber = arguments?.getString("phoneNumber").toString()
         countryCode = arguments?.getString("countryCode").toString()
         countryName = arguments?.getString("countryName").toString()
+
+        Log.d("otp", "arguments: ${phoneNumber} $countryCode $countryName")
+        Log.d("otp", "arguments values: phoneNumber : ${phoneNumber} countryCode: $countryCode countryName : $countryName")
+
+        binding.tvInfo.text = context?.resources?.getString(
+            R.string.waiting_to_automatically_detect_on_sms_sent_to_1_wrong_number
+        )?.let {
+            String.format(it, countryCode, phoneNumber)
+        }
+
+        requireMainActivity().showKeyboard(binding.otp1)
 
         initListener()
         val builder =
@@ -105,16 +120,18 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
                 verificationId: String,
                 token: PhoneAuthProvider.ForceResendingToken
             ) {
-                Handler(Looper.getMainLooper()).postDelayed({
-                    Log.d("otp", "onCodeSent: verificationId $verificationId")
-                    binding.btnVerify.text = "Verify"
-                    Toast.makeText(
-                        requireContext(),
-                        "we have send OTP to your number",
-                        Toast.LENGTH_LONG
-                    )
-                    this@OtpFragment.verificationId = verificationId
-                }, 1000)
+                viewLifecycleOwner.lifecycleScope.launch {
+                    delay(1000) // Kotlin coroutine delay
+                    if (isAdded && view != null) { // Check if the fragment is still valid
+                        this@OtpFragment.verificationId = verificationId
+                        binding.btnVerify.text = "Verify"
+                        Toast.makeText(
+                            requireContext(),
+                            "We have sent OTP to your number",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
             }
         }
         getOtp()
@@ -262,7 +279,7 @@ class OtpFragment : BaseFragment<FragmentOtpBinding>(R.layout.fragment_otp) {
         binding.tvResendOtp.isEnabled = false
         binding.tvResendOtp.alpha = 0.5f
         val timer = Timer()
-        timer.scheduleAtFixedRate(timerTask {
+        timer.schedule(timerTask {
             timerCount--
             runOnUiThread {
                 binding.tvResendOtp.text = "Resend OTP in $timerCount seconds"

@@ -371,5 +371,6 @@
     <string name="channel_info">Channel Info</string>
     <string name="LBL_WHASTAPP_VERIFY_NUMBER">WhatsaApp will need to verify your phone number.Carrier charge may apply. What\'s my number ?</string>
     <string name="LBL_VERIFYING_YOUR_NUMBER">Verifying your number</string>
-    <string name="waiting_to_automatically_detect_on_sms_sent_to_1_wrong_number">Waiting to automatically detect on SMS sent to %1$ .Wrong number?</string>
+    <string name="waiting_to_automatically_detect_on_sms_sent_to_1_wrong_number">Waiting to automatically detect on SMS sent to %1$s %2$s. Wrong number?</string>
+
 </resources>

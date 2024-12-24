@@ -166,18 +166,21 @@ class ChatListFragment : BaseFragment<FragmentChatListBinding>(R.layout.fragment
             }
             Log.d("combineLists", "combineLists: matchingUser : $matchingUser  <-")
             if (matchingUser != null) {
-                combinedList.add(
-                    UserModel(
-                        uid = matchingUser.uid,
-                        name = contact.name,
-                        number = matchingUser.number,
-                        countryCode = matchingUser.countryCode,
-                        countryName = matchingUser.countryName,
-                        imageUrl = matchingUser.imageUrl,
-                        online = matchingUser.online,
-                        token = matchingUser.token
+                val isDuplicate = combinedList.any { it.uid == matchingUser.uid }
+                if (!isDuplicate) {
+                    combinedList.add(
+                        UserModel(
+                            uid = matchingUser.uid,
+                            name = contact.name,
+                            number = matchingUser.number,
+                            countryCode = matchingUser.countryCode,
+                            countryName = matchingUser.countryName,
+                            imageUrl = matchingUser.imageUrl,
+                            online = matchingUser.online,
+                            token = matchingUser.token
+                        )
                     )
-                )
+                }
             }
             Log.d("combineLists", "combineLists: combinedList : ${combinedList.joinToString()}  <-")
         }/* val sortedCombinedList = combinedList.sortedBy { !it.isInDB }*/
