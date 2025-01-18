@@ -20,6 +20,7 @@ import com.thinkwik.communimate.module.model.FileModel
 import com.thinkwik.communimate.module.model.MessageModel
 import com.thinkwik.communimate.prefs.PreferenceStorage
 import com.thinkwik.communimate.utils.DBHelper
+import com.thinkwik.communimate.utils.MediaUploadUtils
 import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -123,13 +124,17 @@ class UploadService : Service() {
             .addOnCompleteListener {
                 reference.downloadUrl.addOnCompleteListener { task ->
                     Log.d("upload-service", "uploadData : ${task.result} $task")
+                    Log.d("upload-service", "uploadData :uploadFor ${uploadFor}")
                     uploadFor?.let {
+                        Log.d("upload-service", "uploadData :uploadFor when : ${it}")
                         when(it){
                             "chat"->{
                                 if (senderUid != null && roomId != null)
                                     sendMessage(mediaType!!, task.result.toString())
                             }
                             "status"->{
+                                Log.d("upload-service", "uploadMedia:MediaUploadUtils.notifyUploadCompleted(\"status\")")
+                                MediaUploadUtils.notifyUploadCompleted("status")
                                 addStory(task.result.toString())
                             }
                             "channel"->{

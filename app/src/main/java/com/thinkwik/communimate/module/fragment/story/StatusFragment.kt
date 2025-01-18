@@ -2,6 +2,7 @@ package com.thinkwik.communimate.module.fragment.story
 
 import android.Manifest
 import android.app.Activity
+
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
@@ -9,6 +10,8 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
+import android.os.Handler
+import android.os.Looper
 import android.provider.MediaStore
 import android.util.Log
 import android.view.MotionEvent
@@ -20,6 +23,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +34,6 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
-import com.thinkwik.communimate.OnMediaUpload
 import com.thinkwik.communimate.R
 import com.thinkwik.communimate.base.BaseFragment
 import com.thinkwik.communimate.databinding.FragmentStatusBinding
@@ -39,7 +43,11 @@ import com.thinkwik.communimate.module.adapter.StatusAdapter
 import com.thinkwik.communimate.module.model.ChannelsModel
 import com.thinkwik.communimate.module.model.UserModel
 import com.thinkwik.communimate.prefs.PreferenceStorage
+import com.thinkwik.communimate.requireMainActivity
+import com.thinkwik.communimate.services.UploadService
 import com.thinkwik.communimate.utils.DBHelper
+import com.thinkwik.communimate.utils.MediaUploadCallBack
+import com.thinkwik.communimate.utils.MediaUploadUtils
 import com.thinkwik.communimate.utils.showDialogPicturePicker
 import com.thinkwik.communimate.utils.uriToBitmap
 import com.thinkwik.communimate.widget.story.StoryModel
@@ -50,7 +58,8 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_status) {
+class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_status),
+    MediaUploadCallBack {
 
     private lateinit var database: FirebaseDatabase
     private lateinit var storage: FirebaseStorage
@@ -93,12 +102,16 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d("status", "onViewCreated: ")
         init()
+
     }
 
     private fun init() {
         Log.d("status", "init: ")
         storyPreference = StoryPreference(requireContext())
+        MediaUploadUtils.registerCallback(this)
+        //sharedViewModel = ViewModelProvider(requireActivity())[SharedViewModel::class.java]
         dbHelper = DBHelper(requireActivity())
         if (!dbHelper.hasRecordsExceptUid(uid = prefs.uid.toString())) {
             dbHelper.enterOtherUserStory()
@@ -116,6 +129,113 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
         //getUserStatus()
         initListener()
     }
+
+    private fun initListener() {
+        binding.llMyStatus.setOnClickListener {
+            if (myStoryModel.storyList!!.isEmpty()) {
+                if (checkCameraPermission()) {
+                    requireActivity().showDialogPicturePicker { b: Boolean, s: String ->
+                        if (s.equals("camera")) {
+                            dispatchTakePictureIntent()
+                        } else if (s.equals("gallery")) {
+                            val intent = Intent()
+                            intent.action = Intent.ACTION_GET_CONTENT
+                            intent.type = "image/*"
+                            startActivityForResult(intent, REQUEST_IMAGE_GALLARY)
+                        }
+                    }
+                } else {
+                    requestCameraPermission()
+                }
+            } else {
+                val bundle = Bundle()
+                bundle.putSerializable("userModel", myStoryModel)
+                findNavController().navigate(R.id.nav_story_play_fragment, bundle)
+            }
+        }
+        binding.llMyStatus.setOnLongClickListener {
+            dbHelper.clearAllUserStories()
+            storyPreference.clearStoryPreferences()
+            Glide.get(requireContext()).clearMemory()
+            Thread {
+                Glide.get(requireContext()).clearDiskCache()
+            }.start()
+            updateUI()
+            true
+        }
+        binding.llViewedExpand.setOnClickListener {
+            isViewedRvExpanded = !isViewedRvExpanded
+            if (isViewedRvExpanded) {
+                binding.ivViewedExpand.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_arrow_down
+                    )
+                )
+            } else {
+                binding.ivViewedExpand.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_arrow_up
+                    )
+                )
+            }
+            binding.rvViewedStatus.isVisible = isViewedRvExpanded
+        }
+        binding.ivChannelAdd.setOnClickListener {
+            binding.llChannelOptions.isVisible = !binding.llChannelOptions.isVisible
+        }
+        binding.rvChannels.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                when (e.action) {
+                    MotionEvent.ACTION_MOVE -> {
+                        rv.parent.requestDisallowInterceptTouchEvent(true)
+                    }
+                }
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+
+            }
+        })
+        binding.rvChannels.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                when (e.action) {
+                    MotionEvent.ACTION_MOVE -> {
+                        rv.parent.requestDisallowInterceptTouchEvent(true)
+                    }
+                }
+                return false
+            }
+
+            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
+
+            }
+
+            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
+
+            }
+        })
+        binding.tvSeeAll.setOnClickListener {
+            findNavController().navigate(R.id.nav_channels_fragment)
+        }
+        binding.btnFindChannels.setOnClickListener {
+            findNavController().navigate(R.id.nav_channels_fragment)
+        }
+        binding.tvCreateChannel.setOnClickListener {
+            showBottomSheet()
+        }
+        binding.tvFindChannels.setOnClickListener {
+            binding.llChannelOptions.isVisible = false
+            findNavController().navigate(R.id.nav_channels_fragment)
+        }
+    }
+
 
     private fun initFollowingChannelsAdapter() {
         followingChannelsAdapter =
@@ -229,7 +349,7 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
     private fun updateUI() {
         val allList = dbHelper.getAllUserStories()
         val myStory = getUserStory(prefs.uid)
-
+        Log.d("upload-service", "myStory::\n ${myStory}")
         myStoryModel = UserModel(
             uid = prefs.uid,
             name = prefs.userName,
@@ -272,111 +392,6 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
         }
     }
 
-    private fun initListener() {
-        binding.llMyStatus.setOnClickListener {
-            if (myStoryModel.storyList!!.isEmpty()) {
-                if (checkCameraPermission()) {
-                    requireActivity().showDialogPicturePicker { b: Boolean, s: String ->
-                        if (s.equals("camera")) {
-                            dispatchTakePictureIntent()
-                        } else if (s.equals("gallery")) {
-                            val intent = Intent()
-                            intent.action = Intent.ACTION_GET_CONTENT
-                            intent.type = "image/*"
-                            startActivityForResult(intent, REQUEST_IMAGE_GALLARY)
-                        }
-                    }
-                } else {
-                    requestCameraPermission()
-                }
-            } else {
-                val bundle = Bundle()
-                bundle.putSerializable("userModel", myStoryModel)
-                findNavController().navigate(R.id.nav_story_play_fragment, bundle)
-            }
-        }
-        binding.llMyStatus.setOnLongClickListener {
-            dbHelper.clearAllUserStories()
-            storyPreference.clearStoryPreferences()
-            Glide.get(requireContext()).clearMemory()
-            Thread {
-                Glide.get(requireContext()).clearDiskCache()
-            }.start()
-            updateUI()
-            true
-        }
-        binding.llViewedExpand.setOnClickListener {
-            isViewedRvExpanded = !isViewedRvExpanded
-            if (isViewedRvExpanded) {
-                binding.ivViewedExpand.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_arrow_down
-                    )
-                )
-            } else {
-                binding.ivViewedExpand.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_arrow_up
-                    )
-                )
-            }
-            binding.rvViewedStatus.isVisible = isViewedRvExpanded
-        }
-        binding.ivChannelAdd.setOnClickListener {
-            binding.llChannelOptions.isVisible = !binding.llChannelOptions.isVisible
-        }
-        binding.rvChannels.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                when (e.action) {
-                    MotionEvent.ACTION_MOVE -> {
-                        rv.parent.requestDisallowInterceptTouchEvent(true)
-                    }
-                }
-                return false
-            }
-
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-
-            }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-
-            }
-        })
-        binding.rvChannels.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
-            override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
-                when (e.action) {
-                    MotionEvent.ACTION_MOVE -> {
-                        rv.parent.requestDisallowInterceptTouchEvent(true)
-                    }
-                }
-                return false
-            }
-
-            override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {
-
-            }
-
-            override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
-
-            }
-        })
-        binding.tvSeeAll.setOnClickListener {
-            findNavController().navigate(R.id.nav_channels_fragment)
-        }
-        binding.btnFindChannels.setOnClickListener {
-            findNavController().navigate(R.id.nav_channels_fragment)
-        }
-        binding.tvCreateChannel.setOnClickListener {
-            showBottomSheet()
-        }
-        binding.tvFindChannels.setOnClickListener {
-            binding.llChannelOptions.isVisible = false
-            findNavController().navigate(R.id.nav_channels_fragment)
-        }
-    }
 
     private fun showBottomSheet() {
         val dialogView = layoutInflater.inflate(R.layout.dialog_create_channel, null)
@@ -540,8 +555,16 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
     }
 
     override fun onResume() {
-        super.onResume()
         Log.d("status", "onResume() : ")
+        updateUI()
+        super.onResume()
+    }
+
+
+    override fun onStart() {
+        Log.d("status", "onStart() : ")
+        super.onStart()
+        updateUI()
     }
 
     private fun getIndicatorDrawable(myStory: ArrayList<StoryModel>): Drawable? {
@@ -550,6 +573,13 @@ class StatusFragment : BaseFragment<FragmentStatusBinding>(R.layout.fragment_sta
         } else {
             ContextCompat.getDrawable(requireContext(), R.drawable.bg_circle_pending)
         }
+    }
+
+    override fun onUploadComplete(uploadFor: String) {
+        Log.d("upload-service", "StatusFragment::onUploadComplete(uploadFor: String)")
+        Handler(Looper.getMainLooper()).postDelayed({
+            updateUI()
+        }, 1000)
     }
 
 }
