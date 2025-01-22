@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_login_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.auth.LoginFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.auth.LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/to_nav_otp_fragment"
@@ -21,7 +21,7 @@
 
     <fragment
         android:id="@+id/nav_otp_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.auth.OtpFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.auth.OtpFragment"
         tools:layout="@layout/fragment_otp">
 
         <argument
@@ -51,7 +51,7 @@
 
     <fragment
         android:id="@+id/nav_chat_list_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.ChatListFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.ChatListFragment"
         tools:layout="@layout/fragment_chat_list">
 
         <action
@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/nav_chat_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.ChatFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.ChatFragment"
         tools:layout="@layout/fragment_chat">
 
         <action
@@ -82,7 +82,7 @@
 
     <fragment
         android:id="@+id/nav_set_profile_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.auth.SetProfileFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.auth.SetProfileFragment"
         tools:layout="@layout/fragment_set_profile">
         <action
             android:id="@+id/to_nav_main_fragment"
@@ -97,12 +97,12 @@
 
     <fragment
         android:id="@+id/nav_update_profile_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.UpdateProfileFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.UpdateProfileFragment"
         tools:layout="@layout/fragment_update_profile" />
 
     <fragment
         android:id="@+id/nav_contact_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.ContactFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.ContactFragment"
         tools:layout="@layout/fragment_contact">
 
         <action
@@ -118,12 +118,12 @@
 
     <fragment
         android:id="@+id/nav_outgoing_call_Fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.OutgoingCallFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.OutgoingCallFragment"
         tools:layout="@layout/fragment_outgoing_call" />
 
     <fragment
         android:id="@+id/nav_main_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.MainFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.MainFragment"
         tools:layout="@layout/fragment_main">
 
         <action
@@ -145,17 +145,17 @@
 
     <fragment
         android:id="@+id/communityFragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.CommunityFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.CommunityFragment"
         tools:layout="@layout/fragment_community" />
 
     <fragment
         android:id="@+id/nav_calls_history_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.CallsHistoryFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.CallsHistoryFragment"
         tools:layout="@layout/fragment_calls_history" />
 
     <fragment
         android:id="@+id/nav_status_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.StatusFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.StatusFragment"
         tools:layout="@layout/fragment_status">
         <!--
                <action
@@ -166,17 +166,17 @@
 
     <fragment
         android:id="@+id/nav_story_play_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.StoryPlayFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.StoryPlayFragment"
         tools:layout="@layout/fragment_story_play" />
 
     <fragment
         android:id="@+id/nav_add_text_story_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.AddTextStoryFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.AddTextStoryFragment"
         tools:layout="@layout/fragment_add_text_story" />
 
     <fragment
         android:id="@+id/nav_new_group_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.NewGroupFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.NewGroupFragment"
         tools:layout="@layout/fragment_new_group">
 
         <!--        <action
@@ -191,12 +191,12 @@
 
     <fragment
         android:id="@+id/nav_create_group_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.home.CreateGroupFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.home.CreateGroupFragment"
         tools:layout="@layout/fragment_create_group" />
 
     <fragment
         android:id="@+id/nav_setting_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.SettingFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.SettingFragment"
         tools:layout="@layout/fragment_setting">
 
         <action
@@ -267,41 +267,41 @@
 
     <fragment
         android:id="@+id/nav_accountFragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.AccountFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.AccountFragment"
         tools:layout="@layout/fragment_account" />
 
     <fragment
         android:id="@+id/nav_privacy_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.PrivacyFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.PrivacyFragment"
         tools:layout="@layout/fragment_privacy" />
 
     <fragment
         android:id="@+id/nav_chats_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.ChatsFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.ChatsFragment"
         tools:layout="@layout/fragment_chats" />
 
     <fragment
         android:id="@+id/nav_notifications_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.NotificationsFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.NotificationsFragment"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/nav_help_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.HelpFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.HelpFragment"
         tools:layout="@layout/fragment_help" />
 
     <fragment
         android:id="@+id/nav_invite_friendFragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.InviteFriendFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.InviteFriendFragment"
         tools:layout="@layout/fragment_invite_friend" />
 
     <fragment
         android:id="@+id/nav_storage_and_data_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.settings.StorageAndDataFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.settings.StorageAndDataFragment"
         tools:layout="@layout/fragment_storage_and_data" />
     <fragment
         android:id="@+id/nav_add_media_story_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.AddMediaStoryFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.AddMediaStoryFragment"
         tools:layout="@layout/fragment_add_media_story">
         <!--
                 <argument
@@ -312,19 +312,19 @@
 
     <fragment
         android:id="@+id/nav_channels_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.FindChannelsFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.FindChannelsFragment"
         tools:layout="@layout/fragment_find_channels" />
 
     <fragment
         android:id="@+id/nav_show_channel_update_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.ShowChannelUpdateFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.ShowChannelUpdateFragment"
         tools:layout="@layout/fragment_show_channel_update" />
     <fragment
         android:id="@+id/nav_create_channel_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.CreateChannelFragment" />
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.CreateChannelFragment" />
     <fragment
         android:id="@+id/nav_channel_profile_fragment"
-        android:name="com.thinkwik.communimate.module.fragment.story.ChannelProfileFragment"
+        android:name="com.thinkwik.whatsappclone.module.fragment.story.ChannelProfileFragment"
         tools:layout="@layout/fragment_channel_profile" />
 
 </navigation>

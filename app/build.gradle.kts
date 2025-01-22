@@ -9,11 +9,11 @@ plugins {
 }
 
 android {
-    namespace = "com.thinkwik.communimate"
+    namespace = "com.thinkwik.whatsappclone"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.thinkwik.communimate"
+        applicationId = "com.thinkwik.whatsappclone"
         minSdk = 24
         targetSdk = 33
         versionCode = 1

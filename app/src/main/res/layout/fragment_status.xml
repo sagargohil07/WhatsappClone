@@ -84,7 +84,7 @@
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <!--          <com.thinkwik.communimate.widget.story.StoryView
+                    <!--          <com.thinkwik.whatsappclone.widget.story.StoryView
                                   android:id="@+id/storyView"
                                   android:layout_width="@dimen/dimen_50"
                                   android:layout_height="@dimen/dimen_50"

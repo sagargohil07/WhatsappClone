@@ -50,13 +50,13 @@
             android:exported="false"
             tools:node="merge">
             <meta-data
-                android:name="com.thinkwik.communimate.utils.KoinInitializer"
+                android:name="com.thinkwik.whatsappclone.utils.KoinInitializer"
                 android:value="androidx.startup" />
         </provider>
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.thinkwik.communimate.fileprovider"
+            android:authorities="com.thinkwik.whatsappclone.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -72,9 +72,9 @@
             </intent-filter>
         </service>
 
-        <service android:name="com.thinkwik.communimate.services.SinchService" />
+        <service android:name="com.thinkwik.whatsappclone.services.SinchService" />
 
-        <service android:name="com.thinkwik.communimate.services.UploadService" />
+        <service android:name="com.thinkwik.whatsappclone.services.UploadService" />
 
         <meta-data
             android:name="preloaded_fonts"

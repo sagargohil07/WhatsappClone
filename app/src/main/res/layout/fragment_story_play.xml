@@ -89,7 +89,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.thinkwik.communimate.widget.story.StoryPlayerProgressView
+        <com.thinkwik.whatsappclone.widget.story.StoryPlayerProgressView
             android:id="@+id/progressBarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
