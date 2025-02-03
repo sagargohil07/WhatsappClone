@@ -44,6 +44,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = "17"
+        languageVersion = "1.9"
+    }
+
+    packagingOptions {
+        exclude("META-INF/INDEX.LIST")
+        exclude("META-INF/DEPENDENCIES")
+        exclude("META-INF/LICENSE")
+        exclude("META-INF/LICENSE.txt")
+        exclude("META-INF/NOTICE")
+        exclude("META-INF/NOTICE.txt")
     }
 }
 
@@ -58,10 +68,10 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
+//    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
+//    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0")
 
-    implementation("androidx.databinding:databinding-common:7.2.2")
+//    implementation("androidx.databinding:databinding-common:7.2.2")
 
     //keyboard open close manage
     implementation("net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:3.0.0-RC2")
@@ -71,15 +81,16 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.5.1")
 
     // Import the BoM for the Firebase platform
-    implementation(platform("com.google.firebase:firebase-bom:32.2.2"))
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
 
     implementation("com.google.firebase:firebase-analytics-ktx")
-
     // Add the dependency for the Firebase Authentication library
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-database-ktx")
     implementation("com.google.firebase:firebase-storage-ktx")
     implementation("com.google.firebase:firebase-messaging-ktx")
+
+    implementation("com.google.auth:google-auth-library-oauth2-http:1.23.0")
 
     implementation("com.github.bumptech.glide:glide:4.14.2")
     annotationProcessor("com.github.bumptech.glide:compiler:4.14.2")

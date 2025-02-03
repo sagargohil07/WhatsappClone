@@ -34,6 +34,35 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318749847466:android:2d177bf8ccdd81b30dc5d3",
+        "android_client_info": {
+          "package_name": "com.thinkwik.whatsappclone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "318749847466-hm4n96889molsntrjtrumh44hmdcjlv9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlvLo-JcRYOh5v_jpllHHdJZLiYMKUvAc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "318749847466-hm4n96889molsntrjtrumh44hmdcjlv9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

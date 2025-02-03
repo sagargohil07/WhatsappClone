@@ -33,8 +33,11 @@ import com.thinkwik.communimate.databinding.FragmentChatBinding
 import com.thinkwik.communimate.module.adapter.ChatsAdapter
 import com.thinkwik.communimate.module.model.MessageModel
 import com.thinkwik.communimate.module.model.UserModel
+import com.thinkwik.communimate.prefs.PreferenceStorage
 import com.thinkwik.communimate.requireMainActivity
+import com.thinkwik.communimate.services.PushNotificationService
 import com.thinkwik.communimate.services.UploadService
+import com.thinkwik.communimate.utils.FCMService
 import com.thinkwik.communimate.utils.performBackspaceAction
 import com.thinkwik.communimate.utils.runOnUiThread
 import com.vanniktech.emoji.Emoji
@@ -54,6 +57,7 @@ import okhttp3.Request
 import okhttp3.RequestBody
 import org.json.JSONException
 import org.json.JSONObject
+import org.koin.android.ext.android.inject
 import java.io.File
 import java.io.IOException
 import java.util.Date
@@ -75,6 +79,8 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(R.layout.fragment_chat),
     private lateinit var dialogMessageSelectBottomSheet: BottomSheetDialog
     private lateinit var args: UserModel
     private lateinit var chatsAdapter: ChatsAdapter
+
+    private val prefs: PreferenceStorage by inject()
 
     companion object {
         const val IMAGE_REQUEST_CODE = 1001
@@ -212,7 +218,13 @@ class ChatFragment : BaseFragment<FragmentChatBinding>(R.layout.fragment_chat),
 
                 database.reference.child("chats").child(roomId).child("message").child(randomKey!!)
                     .setValue(messageModel).addOnCompleteListener {
-                        sendNotification(binding.etChat.text.toString())
+                        PushNotificationService().sendNotification(
+                            context = requireContext(),
+                            token = args.token.toString(),
+                            title = "${args.name.toString()} sent you new message",
+                            body = binding.etChat.text.toString()
+                        )
+
                         binding.etChat.text!!.clear()
                     }
             }
