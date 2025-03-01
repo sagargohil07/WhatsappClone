@@ -48,7 +48,6 @@ A feature-rich WhatsApp clone built using **Firebase** and **SQLite**, supportin
 4. **Build & Run the App!** 🚀
 
 ## 📸 Screenshots
-_(Add screenshots or GIFs here to showcase the app UI & features)_
 
 ## 🛠 Tech Stack
 - **Kotlin**
